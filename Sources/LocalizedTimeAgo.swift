@@ -32,16 +32,21 @@ fileprivate extension Bundle {
     
     static var moduleBundle: Bundle {
         guard let path = Bundle(for: Constants.self).resourcePath else { return .main }
-        return Bundle(path: path.appending("/\(Constants.resource).bundle")) ?? .main
+        let bundle = Bundle(path: path.appending("/\(Constants.resource).bundle")) ?? .main
+        guard let newPath = bundle.path(forResource: String.code, ofType: "lproj") else { return .main }
+        return Bundle(path: newPath) ?? .main
     }
 
+}
+
+public extension String {
+    static var code: String = "en"
 }
 
 fileprivate extension String {
 
     func adjustedKey(forValue value: Int) -> String {
-        let code = Bundle.main.preferredLocalizations.first ?? "en"
-        if code != "ru" && code != "uk" { return self }
+        if String.code != "ru" && String.code != "uk" { return self }
         let xy = Int(floor(Double(value)).truncatingRemainder(dividingBy: 100))
         let y = Int(floor(Double(value)).truncatingRemainder(dividingBy: 10))
         if(y == 0 || y > 4 || (xy > 10 && xy < 15)) { return self }

@@ -107,6 +107,16 @@
 "1 day ago" = "1 день тому";
 
 /* No comment provided by engineer. */
+"1 hour ago" = "1 годину тому";
+
+/* No comment provided by engineer. */
+"1 minute ago" = "1 хвилину тому";
+
+/* No comment provided by engineer. */
+"1 second ago" = "1 секунду тому";
+
+
+/* No comment provided by engineer. */
 "This morning" = "Цього ранку";
 
 /* No comment provided by engineer. */
